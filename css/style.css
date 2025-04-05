@@ -36,6 +36,24 @@ nav a:hover {
   margin: auto;
 }
 
+.posting-container {
+  background: white;
+  padding: 30px;
+  max-width: 60vw;
+  margin: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.posting-container label {
+  display: block;
+}
+
+.posting-container textarea {
+  width: calc(100% - 20px);
+  resize: vertical;
+}
+
 #all-events {
   padding: 30px 20px;
   text-align: center;
