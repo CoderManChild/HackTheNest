@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Post an Event on VolunteerBuddies" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Event | VolunteerBuddies</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/posting_styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a class="navbar-logo" href="index.html">VolunteerBuddies</a>
+      </nav>
+    </header>
+    <main>
+      <div class="posting-container">
+        <h2>Post an Event</h2>
+        <form id="posting-form">
+          <label for="event-name">Event Name:</label>
+          <textarea id="event-name" required placeholder="Event Name"></textarea>
+          <label for="event-description">Event Description:</label>
+          <textarea id="event-description" required placeholder="Event Description"></textarea>
+          <label for="event-location">Event Location:</label>
+          <textarea id="event-location" required placeholder="Event Location"></textarea>
+          <label for="event-time">Event Time:</label>
+          <textarea id="event-time" required placeholder="Event Time"></textarea>
+          <button type="submit" class="post-button">Post</button>
+        </form>
+      </div>
+    </main>
+    <script src="../js/posting.js"></script>
+  </body>
+</html>
