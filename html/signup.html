@@ -32,8 +32,10 @@
     <p>© 2025 VolunteerBuddies</p>
   </footer>
 
-  <script>
-    document.getElementById("signupForm").addEventListener("submit", function (e) {
+  <script type="module">
+    import { auth, createUserWithEmailAndPassword } from "../js/firebase.js";
+
+    document.getElementById("signupForm").addEventListener("submit", async function (e) {
       e.preventDefault();
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
@@ -44,11 +46,15 @@
         return;
       }
 
-      localStorage.setItem("user", JSON.stringify({ name, email, password }));
-      document.getElementById("signupMessage").textContent = "Account created successfully!";
-      setTimeout(() => {
-        window.location.href = "login.html";
-      }, 1000);
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        document.getElementById("signupMessage").textContent = "Account created successfully!";
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 1000);
+      } catch (error) {
+        document.getElementById("signupMessage").textContent = error.message;
+      }
     });
   </script>
 </body>
