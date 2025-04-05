@@ -9,6 +9,13 @@ document.addEventListener("DOMContentLoaded", function () {
         location: "Central Park",
         time: "Saturday, 10 AM",
         volunteers: 5
+      }, 
+      {
+        name: "Other Cleanup",
+        description: "Join us for a neighborhood cleanup event.",
+        location: "Central Park",
+        time: "Saturday, 10 AM",
+        volunteers: 5
       }
     ];
   
