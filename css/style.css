@@ -38,6 +38,18 @@ nav a:hover {
 
 #all-events {
   padding: 30px 20px;
+  text-align: center;
+}
+
+#event-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3%;
+}
+
+.event {
+  width: 29%;
 }
 
 .hero {
