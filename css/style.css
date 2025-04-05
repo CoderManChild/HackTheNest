@@ -50,6 +50,8 @@ nav a:hover {
 
 .event {
   width: 29%;
+  text-align: left;
+  padding: 15px;
 }
 
 .hero {

@@ -27,12 +27,22 @@ document.addEventListener("DOMContentLoaded", async function () {
       eventDiv.classList.add("event");
 
       eventDiv.innerHTML = `
+<<<<<<< HEAD
         <h2>${event.name || "Untitled Event"}</h2>
         <p><strong>Description:</strong> ${event.description || "No description provided."}</p>
         <p><strong>Location:</strong> ${event.location || "TBD"}</p>
         <p><strong>Time:</strong> ${event.time || "TBD"}</p>
         <p><strong>Volunteers Signed Up:</strong> ${event.volunteers ?? 0}</p>
         <hr>
+=======
+        <h2>${event.name}</h2>
+        <p><strong>Description:</strong> ${event.description}</p>
+        <p><strong>Location:</strong> ${event.location}</p>
+        <p><strong>Time:</strong> ${event.time}</p>
+        <p><strong>Volunteers Signed Up:</strong> ${event.volunteers}</p>
+        <button class="confirm-btn">Yes</button>
+        <button class="confirm-btn">No</button>
+>>>>>>> 48818c9e6728da0a269e833d18408290d5c22227
       `;
 
       eventList.appendChild(eventDiv);
