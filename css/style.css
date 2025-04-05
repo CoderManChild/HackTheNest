@@ -57,6 +57,15 @@ main {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
+.feature-box:hover {
+  filter: brightness(0.96);
+}
+
+.feature-box-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .form-container {
   background: white;
   padding: 30px;
