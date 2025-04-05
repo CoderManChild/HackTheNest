@@ -1,11 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>VolunteerBuddies - Home</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Firebase SDK for Modules -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+  
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBmSw8LdYGT_feQ_3pRlR6HZrn3qE8ipJo",
+      authDomain: "volunteer-hacks.firebaseapp.com",
+      projectId: "volunteer-hacks",
+      storageBucket: "volunteer-hacks.appspot.com",
+      messagingSenderId: "522927214135",
+      appId: "1:522927214135:web:a116129a633955ba3ab9b2",
+      measurementId: "G-3WR52S8569"
+    };
 
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Check if user is logged in and update links
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is logged in, hide sign up and login links
+        document.getElementById('signup-link').style.display = 'none';
+        document.getElementById('login-link').style.display = 'none';
+      } else {
+        // User is not logged in, show sign up and login links
+        document.getElementById('signup-link').style.display = 'inline';
+        document.getElementById('login-link').style.display = 'inline';
+      }
+    });
+  </script>
 </head>
 
 <body>
@@ -13,8 +44,8 @@
     <h1>VolunteerBuddies</h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="signup.html">Sign Up</a>
-      <a href="login.html">Login</a>
+      <a href="signup.html" id="signup-link">Sign Up</a>
+      <a href="login.html" id="login-link">Login</a>
       <a href="about_us.html">About Us</a>
     </nav>
   </header>
