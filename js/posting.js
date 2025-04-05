@@ -1,35 +1,38 @@
-import { supabase } from "../js/firebase.js";
+import { supabase } from './supabase.js';  // Import the Supabase client
 
-document.getElementById("posting-form").addEventListener("submit", async function (e) {
-  e.preventDefault();
+const form = document.getElementById('posting-form');
+const eventName = document.getElementById('event-name');
+const eventDescription = document.getElementById('event-description');
+const eventLocation = document.getElementById('event-location');
+const eventTime = document.getElementById('event-time');
 
-  const user = supabase.auth.user();
-  if (!user) {
-    alert("Please log in before posting an event.");
-    return;
-  }
+form.addEventListener('submit', async (event) => {
+  event.preventDefault(); // Prevent default form submission
 
-  const eventObj = {
-    name: document.getElementById("event-name").value.trim(),
-    description: document.getElementById("event-description").value.trim(),
-    location: document.getElementById("event-location").value.trim(),
-    time: document.getElementById("event-time").value.trim(),
-    volunteers: 0,
-    user_id: user.id, // Associate the event with the logged-in user
-  };
+  const name = eventName.value;
+  const description = eventDescription.value;
+  const location = eventLocation.value;
+  const time = eventTime.value;
 
-  if (!eventObj.name || !eventObj.description || !eventObj.location || !eventObj.time) {
-    alert("Please fill in all fields.");
-    return;
-  }
+  // Insert the event into Supabase
+  const { data, error } = await supabase
+    .from('events') // Replace with your table name
+    .insert([
+      {
+        name,
+        description,
+        location,
+        time,
+      },
+    ]);
 
-  try {
-    const { data, error } = await supabase.from("events").insert([eventObj]);
-
-    if (error) throw error;
-
-    window.location.href = "index.html";
-  } catch (error) {
-    alert("Error posting event: " + error.message);
+  if (error) {
+    console.error('Error creating event:', error.message);
+    alert('Failed to create event. Please try again.');
+  } else {
+    console.log('Event created:', data);
+    alert('Event created successfully!');
+    form.reset();
   }
 });
+  

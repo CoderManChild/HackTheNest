@@ -7,9 +7,88 @@
     <title>Post Event | VolunteerBuddies</title>
     <link rel="stylesheet" href="../css/style.css" />
 
+    <!-- Firebase SDK for Modules -->
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js';
+      import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
+      import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.8.0/+esm";
 
+    const firebaseConfig = {
+  apiKey: "AIzaSyBmSw8LdYGT_feQ_3pRlR6HZrn3qE8ipJo",
+  authDomain: "volunteer-hacks.firebaseapp.com",
+  projectId: "volunteer-hacks",
+  storageBucket: "volunteer-hacks.firebasestorage.app",
+  messagingSenderId: "522927214135",
+  appId: "1:522927214135:web:a116129a633955ba3ab9b2",
+  measurementId: "G-3WR52S8569"
+};
 
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      // Initialize Supabase
+      const SUPABASE_URL = "https://oikulzakedxjpyxhbtte.supabase.co";  // Replace with your Supabase URL
+      const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pa3VsemFrZWR4anB5eGhidHRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4ODMxMTAsImV4cCI6MjA1OTQ1OTExMH0.DRQyFJsU0Yw0SzsZThODmjrSoHvV2MD4AKXBesJD5_M";  // Replace with your Supabase anon key
+      const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+      // Check if user is logged in
+      let currentUser = null;
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          currentUser = user; // Set the currentUser to the logged-in user
+        } else {
+          currentUser = null; // No user is logged in
+        }
+      });
+
+      // Get the form and input elements
+      const form = document.getElementById('posting-form');
+      const eventName = document.getElementById('event-name');
+      const eventDescription = document.getElementById('event-description');
+      const eventLocation = document.getElementById('event-location');
+      const eventTime = document.getElementById('event-time');
+
+      // Handle form submission
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent default form submission
+
+        // Check if the user is logged in
+        if (!currentUser) {
+          alert("You must be logged in to post an event.");
+          return;
+        }
+
+        const name = eventName.value;
+        const description = eventDescription.value;
+        const location = eventLocation.value;
+        const time = eventTime.value;
+
+        // Insert the event into Supabase
+        const { data, error } = await supabase
+          .from('events')  // Replace with your table name
+          .insert([
+            {
+              name,
+              description,
+              location,
+              time,
+              user_id: currentUser.uid,  // Link the event to the logged-in user
+            },
+          ]);
+
+        if (error) {
+          console.error('Error creating event:', error.message);
+          alert('Failed to create event. Please try again.');
+        } else {
+          console.log('Event created:', data);
+          alert('Event created successfully!');
+          form.reset();
+        }
+      });
+    </script>
   </head>
+
   <body>
     <header>
       <h1>VolunteerBuddies</h1>
@@ -20,6 +99,7 @@
         <a href="about_us.html">About Us</a>
       </nav>
     </header>
+
     <main>
       <section class="posting-container">
         <h2>Post an Event</h2>
@@ -34,14 +114,11 @@
           <textarea id="event-time" required placeholder="Event Time" rows="3"></textarea>
           <button type="submit" class="post-button">Post</button>
         </form>
-      </sect>
+      </section>
     </main>
+
     <footer>
       <p>2025 VolunteerBuddies</p>
     </footer>
-    <script type="module" src="../js/posting.js"></script>
-    
-    
-    
   </body>
 </html>
