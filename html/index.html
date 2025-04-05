@@ -1,13 +1,15 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>VolunteerBuddies - Home</title>
   <link rel="stylesheet" href="../css/style.css" />
+  
   <!-- Firebase SDK for Modules -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
   
     // Firebase configuration
     const firebaseConfig = {
@@ -26,16 +28,39 @@
 
     // Check if user is logged in and update links
     onAuthStateChanged(auth, (user) => {
+      const welcomeMessage = document.getElementById('welcome-message');
       if (user) {
-        // User is logged in, hide sign up and login links
+        // User is logged in, hide sign up and login links, show logout
         document.getElementById('signup-link').style.display = 'none';
         document.getElementById('login-link').style.display = 'none';
+        document.getElementById('logout-link').style.display = 'inline';
+
+        // Display user's name or email (if displayName is null)
+        const username = user.displayName || user.email.split('@')[0]; // Use email prefix as fallback
+        welcomeMessage.textContent = `Welcome ${username}!`;
       } else {
-        // User is not logged in, show sign up and login links
+        // User is not logged in, show sign up and login links, and show welcome message as guest
         document.getElementById('signup-link').style.display = 'inline';
         document.getElementById('login-link').style.display = 'inline';
+        document.getElementById('logout-link').style.display = 'none';
+        welcomeMessage.textContent = 'Welcome Guest!';  // Default message for guest
       }
     });
+
+    // Logout function
+    const logout = () => {
+      signOut(auth)
+        .then(() => {
+          console.log("User signed out");
+          window.location.href = "index.html"; // Redirect to home after logout
+        })
+        .catch((error) => {
+          console.error("Error signing out: ", error.message);
+        });
+    };
+
+    // Attach logout function to button
+    window.logout = logout; // Make logout accessible in HTML
   </script>
 </head>
 
@@ -47,11 +72,13 @@
       <a href="signup.html" id="signup-link">Sign Up</a>
       <a href="login.html" id="login-link">Login</a>
       <a href="about_us.html">About Us</a>
+      <a href="#" id="logout-link" style="display: none;" onclick="logout()">Logout</a>
     </nav>
   </header>
 
   <main class="main">
     <section class="hero">
+      <h2 id="welcome-message">Welcome est!</h2> <!-- Welcome message here -->
       <h2>Connect. Volunteer. Make a Difference.</h2>
       <p>Find and post volunteering events in your community.</p>
     </section>
