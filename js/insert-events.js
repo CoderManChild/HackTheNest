@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 
       {
         name: "Other Cleanup",
-        description: "Join us for a neighborhood cleanup event.",
+        description: "Join us for a neighborhood cleanup event. duafsdjasfjasklfjasklfjsaklfjasklfjadskfjask asklfjadskfjadskfjkaslfjkadsf",
         location: "Central Park",
         time: "Saturday, 10 AM",
         volunteers: 5
@@ -57,7 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <p><strong>Location:</strong> ${event.location}</p>
         <p><strong>Time:</strong> ${event.time}</p>
         <p><strong>Volunteers Signed Up:</strong> ${event.volunteers}</p>
-        <hr>
+        <button class="confirm-btn">Yes</button>
+        <button class="confirm-btn">No</button>
       `;
   
       eventList.appendChild(eventDiv);
