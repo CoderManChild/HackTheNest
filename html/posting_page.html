@@ -5,6 +5,7 @@
     <meta name="description" content="Post an Event on VolunteerBuddies" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Post Event | VolunteerBuddies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css" />
 
     <!-- Firebase SDK for Modules -->
@@ -127,13 +128,13 @@
         <h2>Post an Event</h2>
         <form id="posting-form">
           <label for="event-name">Event Name:</label>
-          <textarea id="event-name" required placeholder="Event Name" rows="3"></textarea>
+          <input type="text" id="event-name" required placeholder="Event Name">
           <label for="event-description">Event Description:</label>
           <textarea id="event-description" required placeholder="Event Description" rows="3"></textarea>
           <label for="event-location">Event Location:</label>
           <textarea id="event-location" required placeholder="Event Location" rows="3"></textarea>
           <label for="event-time">Event Time:</label>
-          <textarea id="event-time" required placeholder="Event Time" rows="3"></textarea>
+          <input type="datetime-local" id="event-time" required placeholder="Event Time">
           <button type="submit" class="post-button">Post</button>
         </form>
       </section>
