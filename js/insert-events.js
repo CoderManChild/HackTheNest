@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         // Check if the user already signed up
+        console.log("Checking signup for user:", currentUser.uid, "event_id:", event.id); // Debugging line
         const { data: existingSignup, error: signupError } = await supabase
           .from("event_signups")
           .select("*")
