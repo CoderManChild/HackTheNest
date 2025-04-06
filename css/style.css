@@ -87,6 +87,8 @@ nav a:hover {
   width: 29%;
   text-align: left;
   padding: 15px;
+  background-color: #f7d887;
+  color: var(--dark-brown);
 }
 
 .hero {
