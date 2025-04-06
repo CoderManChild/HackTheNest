@@ -75,7 +75,7 @@ nav a:hover {
 
 .posting-container {
   width: 50vw;
-  max-height: calc(100% - 30px);
+  max-height: calc(100% - 20px);
   background: var(--light-green);
   color: white;
   padding: 30px;
