@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         <p><strong>Location:</strong> ${event.location || "TBD"}</p>
         <p><strong>Time:</strong> ${event.time || "TBD"}</p>
         <p><strong>Volunteers Signed Up:</strong> ${event.volunteers ?? 0}</p>
-        <hr>
       `;
 
       eventList.appendChild(eventDiv);
