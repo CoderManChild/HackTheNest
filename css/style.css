@@ -1,5 +1,6 @@
 * {
   font-family: 'Montserrat', Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 :root {
@@ -21,23 +22,36 @@ body {
 
 header {
   background: var(--dark-brown);
+  padding: 0; /* Removed the original padding to allow nav to control layout */
   color: white;
-  padding: 20px;
-  text-align: center;
 }
 
 nav {
-  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: var(--dark-brown);
+}
+
+nav img {
+  height: 30px;
+}
+
+.nav-right {
+  display: flex;
+  gap: 15px;
 }
 
 nav a {
-  color: white;
   text-decoration: none;
-  margin: 0 10px;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: #f7d887;
 }
 
 .main {
@@ -47,7 +61,7 @@ nav a:hover {
 }
 
 #upcoming-events {
- color: var(--dark-brown); 
+  color: var(--dark-brown); 
 }
 
 .signup-main, .login-main {
@@ -89,10 +103,13 @@ nav a:hover {
 
 .event {
   width: 29%;
-  text-align: left;
   padding: 15px;
   background-color: #f7d887;
   color: var(--dark-brown);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: left;
+  margin-bottom: 20px;
 }
 
 .hero {
@@ -170,11 +187,4 @@ footer {
   padding: 20px;
   background: var(--dark-gray);
   color: white;
-}
-
-.event {
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
 }
