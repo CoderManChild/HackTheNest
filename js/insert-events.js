@@ -21,6 +21,19 @@ document.addEventListener("DOMContentLoaded", async function () {
       return;
     }
 
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      const options = {
+        month: "long",
+        day: "2-digit",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true
+      };
+      return date.toLocaleString("en-US", options).replace(",", "");
+    }
+    
     // Render all events
     events.forEach(event => {
       const eventDiv = document.createElement("div");
@@ -30,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         <h2>${event.name || "Untitled Event"}</h2>
         <p><strong>Description:</strong> ${event.description || "No description provided."}</p>
         <p><strong>Location:</strong> ${event.location || "TBD"}</p>
-        <p><strong>Time:</strong> ${event.time || "TBD"}</p>
+        <p><strong>Time:</strong> ${event.time ? formatDate(event.time) : "TBD"}</p>
         <p><strong>Volunteers Signed Up:</strong> ${event.volunteers ?? 0}</p>
       `;
 
