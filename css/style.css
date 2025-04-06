@@ -32,11 +32,15 @@ nav {
   align-items: center;
   padding: 15px 20px;
   background-color: var(--dark-brown);
+  font-size: 20px;
 }
 
 nav img {
-  height: 30px;
+  max-height: 60px;
+  height: auto;
+  transition: max-height 0.3s ease;
 }
+
 
 .nav-right {
   display: flex;
