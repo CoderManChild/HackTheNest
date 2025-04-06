@@ -64,13 +64,15 @@ nav a:hover {
   color: var(--dark-brown); 
 }
 
-.signup-main, .login-main {
+.signup-main, 
+.login-main,
+.about-main {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.posting-container {
+.posting-container, .about-container {
   background: var(--light-green);
   color: white;
   padding: 30px;
