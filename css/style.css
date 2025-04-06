@@ -75,6 +75,7 @@ nav a:hover {
 
 .posting-container {
   width: 50vw;
+  max-height: calc(100% - 30px);
   background: var(--light-green);
   color: white;
   padding: 30px;
@@ -87,9 +88,14 @@ nav a:hover {
   color: white;
   padding: 30px;
   max-width: 50vw;
+  max-height: calc(100% - 30px);
   margin: auto;
   border-radius: 6px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.about-container h1 {
+  margin-top: 0;
 }
 
 .posting-container label {
@@ -204,4 +210,8 @@ footer {
   padding: 20px;
   background: var(--dark-gray);
   color: white;
+}
+
+footer p {
+  margin: 0;
 }
