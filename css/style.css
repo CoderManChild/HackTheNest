@@ -141,6 +141,19 @@ nav a:hover {
   border-radius: 8px;
   text-align: left;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.event-info {
+  flex: 1;
+}
+
+.event button {
+  background-color: #e3c091;
+  padding: 5px;
+  width: 100px;
 }
 
 .hero {
