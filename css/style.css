@@ -46,6 +46,10 @@ nav a:hover {
   margin: auto;
 }
 
+#upcoming-events {
+ color: var(--dark-brown); 
+}
+
 .signup-main, .login-main {
   display: flex;
   justify-content: center;
