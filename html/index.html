@@ -1,4 +1,4 @@
-<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css" />
   
-  <!-- Firebase SDK for Modules -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
   
-    // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyBmSw8LdYGT_feQ_3pRlR6HZrn3qE8ipJo",
       authDomain: "volunteer-hacks.firebaseapp.com",
@@ -23,45 +21,39 @@
       measurementId: "G-3WR52S8569"
     };
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // Check if user is logged in and update links
     onAuthStateChanged(auth, (user) => {
       const welcomeMessage = document.getElementById('welcome-message');
       if (user) {
-        // User is logged in, hide sign up and login links, show logout
         document.getElementById('signup-link').style.display = 'none';
         document.getElementById('login-link').style.display = 'none';
         document.getElementById('logout-link').style.display = 'inline';
 
-        // Display user's name or email (if displayName is null)
-        const username = user.displayName || user.email.split('@')[0]; // Use email prefix as fallback
+        const username = user.displayName || user.email.split('@')[0]; 
         welcomeMessage.textContent = `Welcome ${username}!`;
       } else {
-        // User is not logged in, show sign up and login links, and show welcome message as guest
+        
         document.getElementById('signup-link').style.display = 'inline';
         document.getElementById('login-link').style.display = 'inline';
         document.getElementById('logout-link').style.display = 'none';
-        welcomeMessage.textContent = 'Welcome Guest!';  // Default message for guest
+        welcomeMessage.textContent = 'Welcome Guest!';  
       }
     });
 
-    // Logout function
     const logout = () => {
       signOut(auth)
         .then(() => {
           console.log("User signed out");
-          window.location.href = "index.html"; // Redirect to home after logout
+          window.location.href = "index.html"; 
         })
         .catch((error) => {
           console.error("Error signing out: ", error.message);
         });
     };
 
-    // Attach logout function to button
-    window.logout = logout; // Make logout accessible in HTML
+    window.logout = logout; 
   </script>
 </head>
 
@@ -82,7 +74,7 @@
 
   <main class="main">
     <section class="hero">
-      <h2 id="welcome-message">Welcome est!</h2> <!-- Welcome message here -->
+      <h2 id="welcome-message">Welcome est!</h2> 
       <h2>Connect. Volunteer. Make a Difference.</h2>
       <p>Find and post volunteering events in your community.</p>
     </section>

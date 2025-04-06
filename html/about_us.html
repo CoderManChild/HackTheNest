@@ -2,15 +2,64 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us - VolunteerBuddies</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <title>VolunteerBuddies - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css" />
+    
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
+      import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+    
+      const firebaseConfig = {
+        apiKey: "AIzaSyBmSw8LdYGT_feQ_3pRlR6HZrn3qE8ipJo",
+        authDomain: "volunteer-hacks.firebaseapp.com",
+        projectId: "volunteer-hacks",
+        storageBucket: "volunteer-hacks.appspot.com",
+        messagingSenderId: "522927214135",
+        appId: "1:522927214135:web:a116129a633955ba3ab9b2",
+        measurementId: "G-3WR52S8569"
+      };
+  
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+  
+      onAuthStateChanged(auth, (user) => {
+        const welcomeMessage = document.getElementById('welcome-message');
+        if (user) {
+          document.getElementById('signup-link').style.display = 'none';
+          document.getElementById('login-link').style.display = 'none';
+          document.getElementById('logout-link').style.display = 'inline';
+  
+          const username = user.displayName || user.email.split('@')[0]; 
+          welcomeMessage.textContent = `Welcome ${username}!`;
+        } else {
+          
+          document.getElementById('signup-link').style.display = 'inline';
+          document.getElementById('login-link').style.display = 'inline';
+          document.getElementById('logout-link').style.display = 'none';
+          welcomeMessage.textContent = 'Welcome Guest!';  
+        }
+      });
+  
+      const logout = () => {
+        signOut(auth)
+          .then(() => {
+            console.log("User signed out");
+            window.location.href = "index.html"; 
+          })
+          .catch((error) => {
+            console.error("Error signing out: ", error.message);
+          });
+      };
+  
+      window.logout = logout; 
+    </script>
   </head>
+  
   <body>
     <header>
       <nav>
-        <a href="index.html"><img src="../images/logo.png" alt="VolunteerBuddies Logo" height="30"></a>
+        <a href="index.html"><img src="../images/logo.png" alt="VolunteerBuddies Logo" height="20"></a>
         <div class="nav-right">
           <a href="index.html">Home</a>
           <a href="signup.html" id="signup-link">Sign Up</a>
