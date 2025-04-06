@@ -36,6 +36,12 @@ nav a:hover {
   margin: auto;
 }
 
+.signup-main, .login-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .posting-container {
   background: white;
   padding: 30px;
