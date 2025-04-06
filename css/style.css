@@ -1,9 +1,12 @@
 * {
-  font-family: Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 :root {
   --light-green: #60a159;
+  --dark-gray: #2d2d2d;
+  --dark-green: #365c33;
+  --dark-brown: #684112;
 }
 
 body {
@@ -17,7 +20,7 @@ body {
 }
 
 header {
-  background: #2c3e50;
+  background: var(--dark-brown);
   color: white;
   padding: 20px;
   text-align: center;
@@ -89,7 +92,7 @@ nav a:hover {
 .hero {
   text-align: center;
   padding: 40px;
-  background: var(--light-green);
+  background: var(--dark-green);
   color: white;
   border-radius: 8px;
   margin-bottom: 30px;
@@ -140,7 +143,7 @@ form input {
 form button {
   width: 100%;
   padding: 10px;
-  background-color: #2c3e50;
+  background-color: var(--dark-gray);
   color: white;
   border: none;
   border-radius: 4px;
@@ -159,7 +162,7 @@ form button:hover {
 footer {
   text-align: center;
   padding: 20px;
-  background: #2c3e50;
+  background: var(--dark-gray);
   color: white;
 }
 
