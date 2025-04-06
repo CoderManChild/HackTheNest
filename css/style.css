@@ -72,7 +72,8 @@ nav a:hover {
   align-items: center;
 }
 
-.posting-container, .about-container {
+.posting-container, 
+.about-container {
   background: var(--light-green);
   color: white;
   padding: 30px;
