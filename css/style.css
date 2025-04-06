@@ -152,6 +152,8 @@ nav a:hover {
 
 .event button {
   background-color: #e3c091;
+  border-radius: 6px;
+  border: solid 2px var(--dark-brown);
   padding: 5px;
   width: 100px;
 }
