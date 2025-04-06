@@ -66,18 +66,27 @@ nav a:hover {
 
 .signup-main, 
 .login-main,
-.about-main {
+.about-main,
+.posting-main {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.posting-container, 
+.posting-container {
+  width: 50vw;
+  background: var(--light-green);
+  color: white;
+  padding: 30px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+ 
 .about-container {
   background: var(--light-green);
   color: white;
   padding: 30px;
-  max-width: 60vw;
+  max-width: 50vw;
   margin: auto;
   border-radius: 6px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -88,8 +97,13 @@ nav a:hover {
 }
 
 .posting-container textarea {
-  width: calc(100% - 20px);
+  width: 100%;
+  border: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   resize: vertical;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 #all-events {
