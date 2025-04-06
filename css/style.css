@@ -82,6 +82,10 @@ nav a:hover {
   border-radius: 6px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+
+.posting-container h2 {
+  margin-top: 0;
+}
  
 .about-container {
   background: var(--light-green);
